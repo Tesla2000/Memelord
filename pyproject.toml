@@ -7,4 +7,7 @@ dependencies = [
     "requests",
     "beautifulsoup4",
     "Pillow",
+    "langchain-core",
+    "langchain-openai",
+    "python-dotenv",
 ]
