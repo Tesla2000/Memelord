@@ -1,0 +1,10 @@
+[project]
+name = "memelord"
+version = "0.1.0"
+description = "A tool for scraping and classifying meme templates"
+requires-python = ">=3.12"
+dependencies = [
+    "requests",
+    "beautifulsoup4",
+    "Pillow",
+]
