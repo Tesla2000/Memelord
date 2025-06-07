@@ -1,30 +1,27 @@
-import argparse
-import json
-from itertools import islice
+from itertools import chain
 from pathlib import Path
 
-from _create_utterances import create_utterances
+from config_parser import ConfigCreator
+
+from _calculate_process_values import calculate_process_values
+from _config import Config
+from _distillate_memes import distillate_memes
 from _group_memes import group_memes
 from _load_memes import load_memes
-from _memes import MemeImage
-from classify_meme import classify_memes
-from meme_scraper import scrape_memes
+from _save_memes import gather_memes
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Process memes with custom folder locations.')
-    parser.add_argument('--meme-folder', type=str, default='memes',
-                        help='Directory containing meme files (default: memes)')
-    parser.add_argument('--classified-file', type=str, default='classified_memes.txt',
-                        help='File for storing classified meme files (default: classified_memes)')
-    args = parser.parse_args()
-    # meme_folder = Path(args.meme_folder)
-    # meme_folder.mkdir(exist_ok=True, parents=True)
-    # Path(args.classified_file).write_text("\n".join(json.dumps(meme._asdict()) for meme in classify_memes(scrape_memes(meme_folder))))
-    memes = tuple(load_memes(Path(args.classified_file)))
-    meme_groups = group_memes(memes)
-    meme_utterances = {str((meme_url, *meme_titles)): create_utterances(meme_titles) for meme_url, meme_titles in islice(meme_groups.items(), 10)}
-    print(json.dumps(meme_utterances, indent=2, default=str))
+    config = ConfigCreator().create_config(Config)
+    if config.re_fetch or not Path(config.classified_file).exists():
+        gather_memes(config)
+    memes = tuple(load_memes(config))
+    grouped_memes = tuple(group_memes(memes).values())
+    initial_group_size, needed_distillations = calculate_process_values(grouped_memes, config)
+    distilled_memes = distillate_memes(needed_distillations, initial_group_size, config)
+    distilled_meme_titles = frozenset(chain.from_iterable(distilled_memes))
+    print(tuple(image for image in memes if image.title in distilled_meme_titles))
+
 
 
 if __name__ == "__main__":

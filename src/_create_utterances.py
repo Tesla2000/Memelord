@@ -11,15 +11,13 @@ def create_utterances(meme_titles: Iterable[str], meme_url: str) -> list[str]:
             messages=[
                 {
                     "role": "user",
-                    "content": "Given possible meme titles create a list of utterances that are message the meme could respond with little or without modifications."
-                               "\nMEME TITLES:\n"
-                               "\n".join(meme_titles),
+                    "content": f"What is on this image {meme_url}?",
                 }
             ],
             temperature=0.0,
-            response_format=_Utterances,
+            # response_format=_Utterances,
         ).choices[0]["message"]["content"]
-    )["utterances"]
+    )
 
 class _Utterances(BaseModel):
     utterances: list[str] = Field(description="Utterances that the message could respond to", default_factory=list)

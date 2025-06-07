@@ -1,7 +1,10 @@
 import json
 from pathlib import Path
-from typing import Iterable, NamedTuple
+
+from _config import Config
+from _classify_meme import classify_memes
+from _meme_scraper import scrape_memes
 
 
-def save_memes(memes: Iterable[NamedTuple], filepath: Path):
-    filepath.write_text("\n".join(json.dumps(meme._asdict()) for meme in memes))
+def gather_memes(config: Config) -> None:
+    Path(config.classified_file).write_text("\n".join(json.dumps(meme._asdict()) for meme in classify_memes(scrape_memes(config.meme_folder))))
