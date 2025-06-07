@@ -1,3 +1,4 @@
 /memes/
 /.env
-/filtered_memes
+/classified_memes/
+/classified_memes.txt
