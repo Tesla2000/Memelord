@@ -1,8 +1,12 @@
+from __future__ import annotations
+
 import json
 from collections.abc import Iterable
 
 from litellm import completion
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from pydantic import Field
+
 
 def create_utterances(meme_titles: Iterable[str], meme_url: str) -> list[str]:
     return json.loads(
@@ -19,5 +23,9 @@ def create_utterances(meme_titles: Iterable[str], meme_url: str) -> list[str]:
         ).choices[0]["message"]["content"]
     )
 
+
 class _Utterances(BaseModel):
-    utterances: list[str] = Field(description="Utterances that the message could respond to", default_factory=list)
+    utterances: list[str] = Field(
+        description="Utterances that the message could respond to",
+        default_factory=list,
+    )
