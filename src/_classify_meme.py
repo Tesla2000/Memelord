@@ -1,7 +1,6 @@
 from functools import lru_cache
 from typing import Iterable, Generator
 
-import spacy
 import tqdm
 
 from _memes import MemeImage
@@ -9,6 +8,7 @@ from _memes import MemeImage
 
 @lru_cache
 def nlp():
+    import spacy
     return spacy.load("en_core_web_trf")
 
 
