@@ -13,7 +13,7 @@ charset-normalizer==3.4.2
 click==8.2.1
 cloudpathlib==0.21.1
 confection==0.1.5
-config_parser @ git+https://github.com/Tesla2000/ConfigParser@2c305b66b884f0a0638d888f856dd03a2d9af5a2
+config_parser @ git+https://github.com/Tesla2000/ConfigParser@13b505d59b762351b0856c9dd5dc900384c30540
 curated-tokenizers==0.0.9
 curated-transformers==0.1.1
 cymem==2.0.11

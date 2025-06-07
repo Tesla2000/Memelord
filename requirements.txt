@@ -8,7 +8,7 @@ beautifulsoup4==4.13.4
 certifi==2025.4.26
 charset-normalizer==3.4.2
 click==8.2.1
-config_parser @ git+https://github.com/Tesla2000/ConfigParser@2c305b66b884f0a0638d888f856dd03a2d9af5a2
+config_parser @ git+https://github.com/Tesla2000/ConfigParser@13b505d59b762351b0856c9dd5dc900384c30540
 distro==1.9.0
 filelock==3.18.0
 frozenlist==1.6.2

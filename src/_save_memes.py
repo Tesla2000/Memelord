@@ -7,4 +7,4 @@ from _meme_scraper import scrape_memes
 
 
 def gather_memes(config: Config) -> None:
-    Path(config.classified_file).write_text("\n".join(json.dumps(meme._asdict()) for meme in classify_memes(scrape_memes(config.meme_folder))))
+    Path(config.classified_memes_file).write_text("\n".join(json.dumps(meme._asdict()) for meme in classify_memes(scrape_memes(config.meme_folder))))

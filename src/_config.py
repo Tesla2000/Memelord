@@ -16,6 +16,7 @@ class Config(ConfigBase):
     initial_model: str = Field(default="gpt-4o-mini", description="Model used to distill memes on the first passes. Less specific")
     final_model: str = Field(default="gpt-4o", description="Model used to distill memes on the second and later passes. More specific")
     initial_model_passes: int = Field(default=1, description="Number of passes initial model should be involved in", ge=0)
+    temperature: float = Field(default=.0, description="Temperature of model", ge=0, le=1)
 
 
     def __init__(self, /, **data: Any):
