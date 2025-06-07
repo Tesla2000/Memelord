@@ -1,16 +1,18 @@
 ![Name all memes](doc_images/name_all_memes.png)
 
-Did you ever find yourself in a situation a when you needed just the right meme to communicate how you feel but you couldn't find one to express yourself?
+Have you ever found yourself in a situation where you needed just the right meme to express how you feel—but couldn’t find one that fit?
 
-Believe me that is a skill issue. Luckily for you, you were granted access to this amaizng tool that does job.
+Believe me, that’s a skill issue. Luckily for you, you now have access to this **amazing** tool that gets the job done.
 
-For current version of the project I am using a tournament approach picking memes best suited for specific message and advancing them to the next round untill selection is narrowed down to the declared number.
+In the current version of the project, I'm using a **tournament approach**, selecting the memes best suited for a specific message and advancing them through rounds until the pool is narrowed down to the desired number.
 
-![You have to admire simplicity of design](doc_images/simplicity_of_design.png)
+![You have to admire the simplicity of the design](doc_images/simplicity_of_design.png)
 
-More advanced version is to include utterances with embedded distance. Which LLM are so far unable to produce reliebly.
+A more advanced version includes **utterances with embedding distance**, which LLMs are currently unable to produce reliably.
 
 ![I'm limited by the technology of my age](doc_images/technology_limit.png)
+
+---
 
 ## How to Run
 
@@ -21,6 +23,9 @@ More advanced version is to include utterances with embedded distance. Which LLM
 # Create virtual environment and install dependencies
 make setup
 
+# Add your OpenAI API key to .env file
+echo "OPENAI_API_KEY=your_api_key_here" > .env
+
 # Activate the virtual environment
 source .venv/bin/activate
 ```
@@ -29,6 +34,9 @@ source .venv/bin/activate
 ```cmd
 # Create virtual environment and install dependencies
 make setup-win
+
+# Add your OpenAI API key to .env file
+echo "OPENAI_API_KEY=your_api_key_here" > .env
 
 # Activate the virtual environment
 .venv\Scripts\activate
